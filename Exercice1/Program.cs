@@ -1,64 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LesBases
+namespace SimplifiedDiscounts
 {
-    public class Program
+    public class Publication
     {
-        // Définition du délégué
-        public delegate double DiscountStrategy(Publication article);
+        public string Nom { get; set; }
+        public double Prix { get; set; }
 
-        // Stratégie 1 : Remise fixe en pourcentage
-        public static double PercentageDiscount(Publication article)
+        public Publication(string nom, double prix)
         {
-            const double discountRate = 0.10;
-            return article.Prix * discountRate;
+            Nom = nom;
+            Prix = prix;
         }
+    }
 
-        // Stratégie 2 : Remise pour les livres
-        public static double BookDiscount(Publication article)
-        {
-            if (article is Livre)
-            {
-                const double discountRate = 0.15;
-                return article.Prix * discountRate;
-            }
-            return 0;
-        }
+    public class Livre : Publication
+    {
+        public Livre(string nom, double prix) : base(nom, prix) { }
+    }
 
-        // Stratégie 3 : Remise en fonction du prix
-        public static double PriceBasedDiscount(Publication article)
-        {
-            if (article.Prix > 20)
-            {
-                return 5;
-            }
-            return 0;
-        }
+    public class Disque : Publication
+    {
+        public Disque(string nom, double prix) : base(nom, prix) { }
+    }
 
-        public static void Main(string[] args)
+    public class Video : Publication
+    {
+        public Video(string nom, double prix) : base(nom, prix) { }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
         {
             // Liste de publications
             List<Publication> publications = new List<Publication>
             {
-                new Livre("Harry Potter", 15.99, 10, 400),
-                new Disque("Thriller", 9.99, 5, "Epic Records"),
-                new Video("Inception", 19.99, 3, 150)
+                new Livre("Harry Potter", 25.00),
+                new Disque("Thriller", 9.99),
+                new Video("Inception", 21.50)
             };
 
-            // Instances du délégué
-            DiscountStrategy percentageDiscount = PercentageDiscount;
-            DiscountStrategy bookDiscount = BookDiscount;
-            DiscountStrategy priceBasedDiscount = PriceBasedDiscount;
+            // Remises comme fonctions lambda
+            Func<Publication, double> remisePourcentage = article => article.Prix * 0.10; // 10% pour tous
+            Func<Publication, double> remiseLivre = article => article is Livre ? article.Prix * 0.15 : 0; // 15% supplémentaires pour les livres
+            Func<Publication, double> remisePrixEleve = article => article.Prix > 20 ? 5 : 0; // 5€ si prix > 20€
 
             // Application des remises
-            Console.WriteLine("--- Remises sur les Publications ---");
+            Console.WriteLine("--- Calcul des Remises sur les Publications ---");
 
             foreach (var article in publications)
             {
-                double remise1 = percentageDiscount(article);
-                double remise2 = bookDiscount(article);
-                double remise3 = priceBasedDiscount(article);
+                double remise1 = remisePourcentage(article);
+                double remise2 = remiseLivre(article);
+                double remise3 = remisePrixEleve(article);
 
                 double totalRemise = remise1 + remise2 + remise3;
                 double prixFinal = article.Prix - totalRemise;

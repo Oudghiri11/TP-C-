@@ -12,3 +12,4 @@ C:\Users\ahmed\OneDrive\Bureau\exo_C\Exercice1\obj\Debug\net8.0\refint\Exercice1
 C:\Users\ahmed\OneDrive\Bureau\exo_C\Exercice1\obj\Debug\net8.0\Exercice1.pdb
 C:\Users\ahmed\OneDrive\Bureau\exo_C\Exercice1\obj\Debug\net8.0\Exercice1.genruntimeconfig.cache
 C:\Users\ahmed\OneDrive\Bureau\exo_C\Exercice1\obj\Debug\net8.0\ref\Exercice1.dll
+C:\Users\ahmed\OneDrive\Bureau\exo_C\Exercice1\obj\Debug\net8.0\Exercice1.sourcelink.json
