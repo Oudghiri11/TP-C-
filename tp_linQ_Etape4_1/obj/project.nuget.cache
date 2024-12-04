@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "k/m1VHi7POQ=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ahmed\\OneDrive\\Bureau\\exo_C\\tp_linQ_Etape4\\Exercice1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ahmed\\.nuget\\packages\\system.io.pipelines\\9.0.0\\system.io.pipelines.9.0.0.nupkg.sha512",
+    "C:\\Users\\ahmed\\.nuget\\packages\\system.text.encodings.web\\9.0.0\\system.text.encodings.web.9.0.0.nupkg.sha512",
+    "C:\\Users\\ahmed\\.nuget\\packages\\system.text.json\\9.0.0\\system.text.json.9.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
